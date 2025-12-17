@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="header-title">
+                <h1>List of the most popular books</h1>
+            </div>
+            <div class="header-action">
+                <button id="add-book" type="button">+ Add a book</button>
+            </div>
+        </header>
+        <main>
+            <div class="book-list">
+
+            </div>
+        </main>
+        <div id="overlay" class="overlay hidden"></div>
+        <form id="form" class="hidden" action="">
+            <h1>New Book</h1>
+            <div class="title-group">
+                <label for="title">Title: </label>
+                <input name="title" id="title" placeholder="Enter the book title..." type="text">
+            </div>
+
+            <div class="author-group">
+                <label for="author">Author: </label>
+                <input name="author" id="author" placeholder="Enter the author's name..." type="text">
+            </div>
+
+            <div class="pages-group">
+                <label for="pages">Number of pages: </label>
+                <input name="pages" id="pages" placeholder="Enter the number of pages..." type="number">
+            </div>
+            <div class="is-read-group">
+                <label>Reading Status:</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="isRead" value="true" />
+                        <span>Read</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="isRead" value="false" checked />
+                        <span>Not Read</span>
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="submit-group">
+                <input id="form-submit" type="submit" value="Submit">
+            </div>
+
+        </form>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
