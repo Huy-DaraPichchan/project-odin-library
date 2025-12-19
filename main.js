@@ -68,7 +68,7 @@ function cardBuilder(book) {
                         <p class="is-read">Status: <span class="badge-pill ${book.isRead ? 'read' : 'not-read'}">${book.isRead ? 'Read' : 'Not read'}</span></p>
                     </div>
                     <div class="card-footer">
-                        <button class="mark-as-read">Mark as Read</button>
+                        <button class="mark-as-read">Mark as: ${book.isRead ? 'Read' : 'Not read'}</button>
                         <button class="rm-book">Remove</button>
                     </div>
                 `;
