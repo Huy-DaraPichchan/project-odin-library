@@ -25,6 +25,10 @@ function Book(title, author, pages, isRead) {
     this.isRead = isRead;
 }
 
+Book.prototype.toggleRead = function () {
+    this.isRead = !this.isRead;
+}
+
 
 function addBookToLibrary(title, author, pages, isRead) {
     new_book = new Book(title, author, pages, isRead);
@@ -41,7 +45,7 @@ function getUserInput(callback) {
     let title = document.getElementById('title').value.trim();
     let author = document.getElementById('author').value.trim();
     let pages = document.getElementById('pages').value.trim();
-    let isRead = document.querySelector("input[name='isRead']:checked").value === 'true';
+    let isRead = false;
 
     pages = parseInt(pages);
 
@@ -51,8 +55,9 @@ function getUserInput(callback) {
 function cardBuilder(book) {
     const card = document.createElement('div');
     card.className = 'card';
+    card.dataset.id = book.id
 
-    card.innerHTML = `<div class="card">
+    card.innerHTML = `
                     <div class="card-img">
                         <img src="book-cover.webp" alt="Book Cover">
                     </div>
@@ -60,13 +65,12 @@ function cardBuilder(book) {
                         <h3>Title: ${book.title}</h3>
                         <p>Author: ${book.author}</p>
                         <p>Pages: ${book.pages}</p>
-                        <p class="is-read">Status: ${book.isRead ? 'Read' : 'Not read'} <span class="badge-pill">Read</span></p>
+                        <p class="is-read">Status: <span class="badge-pill ${book.isRead ? 'read' : 'not-read'}">${book.isRead ? 'Read' : 'Not read'}</span></p>
                     </div>
                     <div class="card-footer">
-                        <button>Mark as Read</button>
-                        <button>Remove</button>
+                        <button class="mark-as-read">Mark as Read</button>
+                        <button class="rm-book">Remove</button>
                     </div>
-                </div>
                 `;
     return card
 }
@@ -105,6 +109,38 @@ document.addEventListener('DOMContentLoaded', function () {
             renderBook();
         })
     })
+
+    document.querySelector('.book-list').addEventListener('click', (e) => {
+        if (e.target.classList.contains('rm-book')) {
+
+            const card = e.target.closest('.card');
+            const id = card.dataset.id;
+
+            const idx = library.findIndex(book => book.id === id)
+
+            if (idx === -1) return;
+
+            library.splice(idx, 1)
+
+            renderBook()
+            return;
+        }
+
+        if (e.target.classList.contains('mark-as-read')) {
+            const card = e.target.closest('.card')
+            const id = card.dataset.id;
+
+            const book = library.find(book => book.id === id)
+            if (!book) return;
+
+            book.toggleRead()
+            renderBook()
+        }
+
+
+    })
+
+    renderBook()
 
 
 

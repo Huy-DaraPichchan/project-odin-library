@@ -91,6 +91,7 @@ main {
     min-width: 0;
     border-radius: 1rem;
     border: 1px solid black;
+
 }
 
 .card-img {
@@ -107,6 +108,55 @@ main {
     object-fit: contain;
     display: block;
 
+}
+
+.card-body,
+.card-footer {
+    padding: .4rem;
+}
+
+.card-footer {
+    display: inline-flex;
+    justify-content: right;
+    gap: .5rem;
+}
+
+.card-footer button {
+    padding: .25rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    opacity: 75%;
+    font-weight: 600;
+}
+
+.card-footer button:hover {
+    opacity: 100%;
+}
+
+.card-footer .mark-as-read {
+    background-color: antiquewhite;
+}
+
+.card-footer .rm-book {
+    background-color: rgb(248, 103, 127);
+}
+
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .25rem .75rem;
+    border-radius: 2rem;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+.badge-pill.read {
+    background-color: lightgreen;
+}
+
+.badge-pill.not-read {
+    background-color: lightcoral;
 }
 
 
